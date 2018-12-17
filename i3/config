@@ -186,6 +186,20 @@ bindsym Print exec gnome-screenshot -i
 
 # Multiple monitors
 exec --no-startup-id xrandr --output DP-2-2 --primary --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2 --rotate left
+
 workspace 1 output DP-2-2
-workspace 2 output DP-2-1
-workspace 3 output eDP-1
+workspace 2 output DP-2-2
+workspace 3 output DP-2-2
+workspace 4 output DP-2-2
+workspace 5 output DP-2-2
+workspace 6 output DP-2-2
+
+workspace 7 output DP-2-1
+workspace 8 output DP-2-1
+
+workspace 9 output eDP-1
+workspace 10 output eDP-1
+
+assign [class="Code"] 4
+assign [class="Slack"] 9
+assign [class="Spotify"] 10 
