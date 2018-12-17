@@ -200,6 +200,6 @@ workspace 8 output DP-2-1
 workspace 9 output eDP-1
 workspace 10 output eDP-1
 
-assign [class="Code"] 4
+assign [class="Code"] 2
 assign [class="Slack"] 9
 assign [class="Spotify"] 10 
