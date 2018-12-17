@@ -116,12 +116,20 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move current workspace between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Lock screen
+bindsym $mod+Shift+p exec --no-startup-id i3lock -c "#772953", mode "default"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,3 +183,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
 bindsym Print exec gnome-screenshot -i
+
+# Multiple monitors
+exec --no-startup-id xrandr --output DP-2-2 --primary --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2 --rotate left
+workspace 1 output DP-2-2
+workspace 2 output DP-2-1
+workspace 3 output eDP-1
