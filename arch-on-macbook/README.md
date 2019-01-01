@@ -369,3 +369,64 @@ sudo reboot
 
 Click the ibus icon bottom-right of the screen and enable `Start in hangul mode`.
 
+## Trackpad
+
+Download the `xf86-input-mtrack-git` snapshot from `aur.archlinux.org`.
+```bash
+tar xvzf x86-input-mtrack-git.tar.gz
+cd x86-input-mtrack-git
+makepkg -sic
+```
+```bash
+sudo vi /usr/share/X11/xorg.conf.d/10-mtrack.conf
+```
+```
+Section "InputClass"
+    MatchIsTouchpad "on"
+    Identifier      "Touchpads"
+    Driver          "mtrack"
+    Option          "AccelerationProfile" "2"
+    Option          "ConstantDeceleration" "2.5"
+    Option          "AdaptiveDecleration" "3.0"
+    Option          "Sensitivity" "0.6"
+    Option          "FingerHigh" "5"
+    Option          "FingerLow" "1"
+    Option          "ThumbSize" "30"
+    Option          "PalmSize" "40"
+    Option          "IgnoreThumb" "true"
+    Option          "IgnorePalm" "true"
+    Option          "DisableOnPalm" "true"
+    Option          "DisableOnThumb" "false"
+    Option          "TapButton1" "1"
+    Option          "TapButton2" "3"
+    Option          "TapButton3" "2"
+    Option          "TapButton4" "0"
+    Option          "ClickFinger1" "1"
+    Option          "ClickFinger2" "3"
+    Option          "ClickFinger3" "2"
+    Option          "ButtonEnable" "true"
+    Option          "ButtonMoveEmulate" "true"
+    Option          "ButtonIntegrated" "true"
+    Option          "ButtonTouchExpire" "0"
+    Option          "BottomEdge" "20"
+    Option          "SwipeLeftButton" "9"
+    Option          "SwipeRightButton" "8"
+    Option          "SwipeUpButton" "0"
+    Option          "SwipeDownButton" "0"
+    Option          "SwipeDistance" "1000"
+    Option          "GestureWaitTime" "0"
+    Option          "ScrollDistance" "50"
+    Option          "ScrollUpButton" "5"
+    Option          "ScrollDownButton" "4"
+    Option          "ScrollLeftButton" "7"
+    Option          "ScrollRightButton" "6"
+    Option          "TapDragEnable" "false"
+    Option          "TapDragTime" "0"
+    Option          "MaxTapTime" "150"
+EndSection
+```
+
+
+
+
+
