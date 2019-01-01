@@ -347,12 +347,25 @@ Enable the service. (Assume the name of interface is `wlp2s0b1`.)
 ```bash
 sudo pacman -S wpa_actiond
 sudo systemctl enable netctl-auto@wlp2s0b1
-```
-
-### Reboot
-
-```bash
 sudo reboot
 ```
 
+### Install the Korean font
+
+Download the `ttf-nanum` snapshot from `aur.archlinux.org`.
+```bash
+tar xvzf ttf-nanum.tar.gz
+cd ttf-nanum.tar.gz
+makepkg -sic
+```
+
+### Install the Korean input method
+
+```bash
+sudo pacman -S ibus ibus-hangul
+ibus-setup
+sudo reboot
+```
+
+Click the ibus icon bottom-right of the screen and enable `Start in hangul mode`.
 
