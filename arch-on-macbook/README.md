@@ -186,6 +186,11 @@ Check the `wifi-menu` works well.
 wifi-menu
 ```
 
+Enable the `dhcpcd` service to start after boot.
+```bash
+sudo systemctl enable dhcpcd
+```
+
 ### Add an user
 
 ```bash
@@ -340,7 +345,8 @@ ip addr
 
 Enable the service. (Assume the name of interface is `wlp2s0b1`.)
 ```bash
-systemctl enable netctl-auto@wlp2s0b1
+sudo pacman -S wpa_actiond
+sudo systemctl enable netctl-auto@wlp2s0b1
 ```
 
 ### Reboot
