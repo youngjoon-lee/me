@@ -350,13 +350,23 @@ sudo systemctl enable netctl-auto@wlp2s0b1
 sudo reboot
 ```
 
+### Install yaourt
+
+```bash
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+cd ..
+```
+
 ### Install the Korean font
 
-Download the `ttf-nanum` snapshot from `aur.archlinux.org`.
 ```bash
-tar xvzf ttf-nanum.tar.gz
-cd ttf-nanum.tar.gz
-makepkg -sic
+yaourt -S ttf-nanum
 ```
 
 ### Install the Korean input method
@@ -371,62 +381,55 @@ Click the ibus icon bottom-right of the screen and enable `Start in hangul mode`
 
 ## Trackpad
 
-Download the `xf86-input-mtrack-git` snapshot from `aur.archlinux.org`.
-```bash
-tar xvzf x86-input-mtrack-git.tar.gz
-cd x86-input-mtrack-git
-makepkg -sic
-```
-```bash
-sudo vi /usr/share/X11/xorg.conf.d/10-mtrack.conf
-```
+Don't use synaptics or mtrack. They are utter crap.
+
+Xorg-server will come with libinput driver installed, and the libinput is enough. Wayland is using libinput for a reason as well.
+
+Create `/etc/X11/xorg.conf.d/30-touchpad.conf`.
 ```
 Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
     MatchIsTouchpad "on"
-    Identifier      "Touchpads"
-    Driver          "mtrack"
-    Option          "AccelerationProfile" "2"
-    Option          "ConstantDeceleration" "2.5"
-    Option          "AdaptiveDecleration" "3.0"
-    Option          "Sensitivity" "0.6"
-    Option          "FingerHigh" "5"
-    Option          "FingerLow" "1"
-    Option          "ThumbSize" "30"
-    Option          "PalmSize" "40"
-    Option          "IgnoreThumb" "true"
-    Option          "IgnorePalm" "true"
-    Option          "DisableOnPalm" "true"
-    Option          "DisableOnThumb" "false"
-    Option          "TapButton1" "1"
-    Option          "TapButton2" "3"
-    Option          "TapButton3" "2"
-    Option          "TapButton4" "0"
-    Option          "ClickFinger1" "1"
-    Option          "ClickFinger2" "3"
-    Option          "ClickFinger3" "2"
-    Option          "ButtonEnable" "true"
-    Option          "ButtonMoveEmulate" "true"
-    Option          "ButtonIntegrated" "true"
-    Option          "ButtonTouchExpire" "0"
-    Option          "BottomEdge" "20"
-    Option          "SwipeLeftButton" "9"
-    Option          "SwipeRightButton" "8"
-    Option          "SwipeUpButton" "0"
-    Option          "SwipeDownButton" "0"
-    Option          "SwipeDistance" "1000"
-    Option          "GestureWaitTime" "0"
-    Option          "ScrollDistance" "50"
-    Option          "ScrollUpButton" "5"
-    Option          "ScrollDownButton" "4"
-    Option          "ScrollLeftButton" "7"
-    Option          "ScrollRightButton" "6"
-    Option          "TapDragEnable" "false"
-    Option          "TapDragTime" "0"
-    Option          "MaxTapTime" "150"
+    Option "Tapping" "on"
+    Option "NaturalScrolling" "true"
+    Option "ClickMethod" "clickfinger"
+    Option "AccelProfile" "flat"
 EndSection
 ```
 
+```bash
+sudo reboot
+```
 
+### Sound
 
+```bash
+yaourt -S alsa-utils
+sudo reboot
+```
+```bash
+speaker-test -c 2
+```
+
+Add the followings to the `~/.config/i3/config`.
+```
+# Alsamixer Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master unmute 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master unmute 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master mute
+```
+
+And restart the i3wm.
+
+### Facetime WebCam driver
+
+NOT TESTED
+
+Apparently for a long time Mac community didn’t have a driver for FaceTime webcam, but due to enormous effort from community they managed to reverse engineer the driver and now we profit by simply running this:
+
+```bash
+yaourt -S bcwc-pcie-git
+```
 
 
