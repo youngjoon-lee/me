@@ -255,8 +255,8 @@ sudo pacman -Syu
 sudo pacman -S intel-ucode
 ```
 
-Add a line on `/boot/loader/entries/entry.conf`, above the line of `initrd` /initramfs-linux.img`.
-```
+Add a line on `/boot/loader/entries/entry.conf`, above the line of `initrd /initramfs-linux.img`.
+``
 ...
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
@@ -329,6 +329,24 @@ sudo pacman -S ttf-dejavu
 
 ```bash
 sudo pacman -S firefox flashplugin
+```
+
+### Turn the Internet on when startup
+
+Check the name of the network interface.
+```bash
+ip addr
+```
+
+Enable the service. (Assume the name of interface is `wlp2s0b1`.)
+```bash
+systemctl enable netctl-auto@wlp2s0b1
+```
+
+### Reboot
+
+```bash
+sudo reboot
 ```
 
 
