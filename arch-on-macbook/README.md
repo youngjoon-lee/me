@@ -321,7 +321,7 @@ esac
 ### Install the i3-wm
 
 ```bash
-sudo pacman -S i3-wm
+sudo pacman -S i3-wm dmenu i3status
 ```
 
 ### Install the font
