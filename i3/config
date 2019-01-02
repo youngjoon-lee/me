@@ -163,9 +163,6 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id setxkbmap -layout us -option 'caps:ctrl_modifier'
-exec --no-startup-id ibus-daemon --xim -d -r # default key: alt+shift+space
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -184,8 +181,11 @@ bindsym XF86AudioPrev exec playerctl previous
 # Screenshot
 bindsym Print exec gnome-screenshot -i
 
+# Suspend
+bindsym $mod+p exec systemctl suspend
+
 # Multiple monitors
-exec --no-startup-id xrandr --output DP-2-2 --primary --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2 --rotate left
+exec --no-startup-id xrandr --output DP-2-2 --primary --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2
 
 workspace 1 output DP-2-2
 workspace 2 output DP-2-2
@@ -203,3 +203,6 @@ workspace 10 output eDP-1
 assign [class="Code"] 2
 assign [class="Slack"] 9
 assign [class="Spotify"] 10 
+
+exec --no-startup-id ibus-daemon --xim -d -r # default key: alt+shift+space
+exec --no-startup-id setxkbmap -layout us -option 'caps:ctrl_modifier'
