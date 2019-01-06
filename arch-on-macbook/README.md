@@ -156,7 +156,7 @@ export LANG=en_US.UTF-8
 
 Create the hostname file.
 ```bash
-echo "oudwud-macbook-air" > /etc/hostname
+echo "archair" > /etc/hostname
 ```
 
 Add matching entries to:
@@ -164,9 +164,9 @@ Add matching entries to:
 vi /etc/hosts
 ```
 ```
-127.0.0.1	localhost
-::1			localhost
-127.0.1.1	oudwud-macbook-air.localdomain oudwud-macbook-air
+127.0.0.1    localhost
+::1          localhost
+127.0.1.1    archair.localdomain archair
 ```
 
 ### Root passwd
@@ -261,7 +261,7 @@ sudo pacman -S intel-ucode
 ```
 
 Add a line on `/boot/loader/entries/entry.conf`, above the line of `initrd /initramfs-linux.img`.
-``
+```
 ...
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
@@ -424,12 +424,55 @@ And restart the i3wm.
 
 ### Facetime WebCam driver
 
-NOT TESTED
-
-Apparently for a long time Mac community didn’t have a driver for FaceTime webcam, but due to enormous effort from community they managed to reverse engineer the driver and now we profit by simply running this:
-
 ```bash
 yaourt -S bcwc-pcie-git
 ```
 
+### Bluetooth
 
+```bash
+sudo pacman -S bluez bluez-utils
+sudo systemctl enable --now bluetooth
+sudo pacman -S blueman
+blueman-applet
+```
+
+### MBP Fan Usage
+
+```bash
+yaourt -S mbpfan-git
+sudo systemctl enable --now mbpfan
+```
+
+### Automated Power Regulation
+
+```bash
+sudo pacman -S tlp
+sudo systemctl enable --now tlp
+```
+
+### Overheat shutoff
+
+```bash
+yaourt -S thermald
+sudo systemctl enable --now thermald
+```
+
+### Display brightness
+
+```bash
+yaourt -S light-git
+```
+
+Add the following lines in `~/.config/i3/config`.
+
+```
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+```
+
+### Keyboar backlight
+
+```bash
+kbdlight max
+```
