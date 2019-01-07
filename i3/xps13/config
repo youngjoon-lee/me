@@ -211,7 +211,7 @@ bindsym $mod+x mode "$mode_display"
 #assign [class="Code"] 2
 assign [class="Firefox"] 1
 assign [class="Google-chrome"] 2
-assign [class="Slack"] 0
+assign [class="Slack"] 10
 
 exec --no-startup-id ibus-daemon --xim -d -r # default key: alt+shift+space
 exec --no-startup-id setxkbmap -layout us -option 'caps:ctrl_modifier'
