@@ -183,11 +183,10 @@ bindsym Print exec gnome-screenshot -i
 bindsym $mod+p exec systemctl suspend
 
 # Multiple monitors
-exec --no-startup-id xrandr --output eDP-1 --auto --output DP-2-2 --primary --auto --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2
-set $mode_display Ext Screen (m) MULTI, (s) SINGLE
+set $mode_display Ext Screen (i) INTERNAL, (e) EXTERNAL
 mode "$mode_display" {
-    bindsym m exec --no-startup-id xrandr --output eDP-1 --auto --output DP-2-2 --primary --auto --above eDP-1 --output DP-2-1 --auto --right-of DP-2-2, mode "default"
-    bindsym s exec --no-startup-id xrandr --output eDP-1 --primary --output DP-2-1 --off --output DP-2-2 --off, mode "default"
+    bindsym i exec --no-startup-id xrandr --output eDP-1 --primary --auto --output DP-2-2 --off, mode "default"
+    bindsym e exec --no-startup-id xrandr --output DP-2-2 --primary --auto --output eDP-1 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -196,26 +195,27 @@ mode "$mode_display" {
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
 
-workspace 1 output DP-2-2
-workspace 2 output DP-2-2
-workspace 3 output DP-2-2
-workspace 4 output DP-2-2
-workspace 5 output DP-2-2
-workspace 6 output DP-2-2
+#workspace 1 output DP-2-2
+#workspace 2 output DP-2-2
+#workspace 3 output DP-2-2
+#workspace 4 output DP-2-2
+#workspace 5 output DP-2-2
+#
+#workspace 6 output DP-2-1
+#workspace 7 output DP-2-1
+#workspace 8 output DP-2-1
+#
+#workspace 9 output eDP-1
+#workspace 10 output eDP-1
 
-workspace 7 output DP-2-1
-workspace 8 output DP-2-1
-
-workspace 9 output eDP-1
-workspace 10 output eDP-1
-
+#assign [class="Code"] 2
 assign [class="Firefox"] 1
-assign [class="Code"] 2
-assign [class="Google-chrome"] 7
-assign [class="Slack"] 9
-assign [class="Spotify"] 10 
+assign [class="Google-chrome"] 2
+assign [class="Slack"] 0
 
 exec --no-startup-id ibus-daemon --xim -d -r # default key: alt+shift+space
 exec --no-startup-id setxkbmap -layout us -option 'caps:ctrl_modifier'
 # The shortcut to change layout to US when the layout is changed unexpectedly.
 bindsym $mod+z exec setxkbmap -layout us 
+
+focus_follows_mouse no
