@@ -1,0 +1,16 @@
+[core]
+	editor = vim
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	d = difftool
+	la = log --all --graph
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+	trustExitCode = true # Be able to abort all diffs with `:cq` or `:cquit`
+[credential]
+	helper = cache
