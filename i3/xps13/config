@@ -178,16 +178,17 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
-bindsym Print exec gnome-screenshot -i
+bindsym $mod+Shift+s exec gnome-screenshot -i
 
 # Suspend
 bindsym $mod+p exec systemctl suspend
 
 # Multiple monitors
-set $mode_display Ext Screen (i) INTERNAL, (e) EXTERNAL
+set $mode_display Ext Screen (i) INTERNAL, (e) EXTERNAL, (h) HOME
 mode "$mode_display" {
-    bindsym i exec --no-startup-id xrandr --output eDP-1 --primary --auto --output DP-2-2 --off, mode "default"
-    bindsym e exec --no-startup-id xrandr --output DP-2-2 --primary --auto --output eDP-1 --off, mode "default"
+	bindsym i exec --no-startup-id xrandr --output eDP-1 --primary --auto --output DP-2-2 --off, mode "default"
+	bindsym e exec --no-startup-id xrandr --output DP-2-2 --primary --auto --output eDP-1 --off, mode "default"
+	bindsym h exec --no-startup-id xrandr --output DP-1 --primary --auto --output eDP-1 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -210,13 +211,16 @@ bindsym $mod+x mode "$mode_display"
 #workspace 10 output eDP-1
 
 #assign [class="Code"] 2
-assign [class="Firefox"] 1
-assign [class="Google-chrome"] 2
+#assign [class="Firefox"] 1
+#assign [class="Google-chrome"] 2
 assign [class="Slack"] 10
 
 exec --no-startup-id ibus-daemon --xim -d -r # default key: alt+shift+space
 exec --no-startup-id setxkbmap -layout us -option 'caps:ctrl_modifier'
 # The shortcut to change layout to US when the layout is changed unexpectedly.
-bindsym $mod+z exec setxkbmap -layout us 
+bindsym $mod+z exec setxkbmap -layout us
 
 focus_follows_mouse no
+
+bindsym $mod+t exec --no-startup-id xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'Device Enabled' 0
+bindsym $mod+Shift+t exec --no-startup-id xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'Device Enabled' 1
