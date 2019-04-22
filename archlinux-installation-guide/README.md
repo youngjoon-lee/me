@@ -1,4 +1,8 @@
-## Pre-installation
+This guide is based on [the offical installation guide](https://wiki.archlinux.org/index.php/installation_guide).
+
+## Pre-installation for Mac users
+
+This chapter is for users who want to install ArchLinux on Macbook. If you don't use Macbook, skip this chapter.
 
 ### Download ArchLinux image
 
@@ -35,7 +39,9 @@ Don't forget to append `r` before `diskX`.
 
 Reference: [here](https://wiki.archlinux.org/index.php/Installation_guide#Pre-installation) and [here](https://withjeon.com/2017/11/07/arch-linux-install-guide/)
 
-Reboot with USB drive. Press `alt` on rebooting and select the USB drive.
+Reboot with USB drive. Press `alt` on rebooting and select the USB drive if you are using Macbook.
+
+NOTE: If you're using the nVidia graphic card, the terminal prompt will be too tiny. In this case, you need to pass the kernel parameter `nomodeset` to disable the KMS. Please `e` when the boot menu shows up and add `nomodeset` at the end of the existing kernel parameters. See [this](https://wiki.archlinux.org/index.php/kernel_mode_setting#Disabling_modesetting) and [this](https://wiki.archlinux.org/index.php/Kernel_parameters#Syslinux).
 
 ### Verify the boot mode
 
@@ -47,12 +53,16 @@ If the directory does not exist, the system may be booted in BIOS or CSM mode. R
 
 ### Connect to the Internet
 
+Only for laptops.
+
 ```bash
 sudo wifi-menu
 sudo systemctl start dhcpcd
 ```
 
 ### Update the system clock
+
+Only for laptops.
 
 ```bash
 timedatectl set-ntp true
@@ -66,15 +76,14 @@ Check the device names and partition names
 lsblk
 ```
 
-Make partitions using cfdisk
+Make partitions using cfdisk. Delete a empty partition created by Disk Utility on macOS, and create three new partition like belows.
 ```bash
 cfdisk
 ```
-
-Delete a empty partition created by Disk Utility on macOS, and create three new partition like belows.
+If you have already installed Windows, you don't need to create the EFI system. It may be already created by Windows. See [this](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Installation).
 ```
 /dev/sda3 - EFI System / 512M
-/dev/sda4 - Linux swap / 4G
+/dev/sda4 - Linux swap / 4G (Same size with the physical memory)
 /dev/sda5 - Linux filesystem / Remaining size
 ```
 
@@ -85,7 +94,7 @@ Select `Write` and `Quit`.
 Format two partitions, `/dev/sda3` and `/dev/sda5`. Don't format `/dev/sda4` for now.
 
 ```bash
-mkfs.fat -F32 /dev/sda3
+mkfs.fat -F32 /dev/sda3  # Only if you created the EFI system (not by Windows)
 mkfs.ext4 /dev/sda5
 ```
 
@@ -106,7 +115,7 @@ mount /dev/sda3 /mnt/boot
 
 ### Select the mirror list
 
-I skipped this step.
+Move the fastest mirror to the top of the list.
 
 ### Install base packages
 
@@ -156,7 +165,7 @@ export LANG=en_US.UTF-8
 
 Create the hostname file.
 ```bash
-echo "archair" > /etc/hostname
+echo "oudwud-arch" > /etc/hostname
 ```
 
 Add matching entries to:
@@ -166,7 +175,7 @@ vi /etc/hosts
 ```
 127.0.0.1    localhost
 ::1          localhost
-127.0.1.1    archair.localdomain archair
+127.0.1.1    oudwud-arch.localdomain oudwud-arch
 ```
 
 ### Root passwd
@@ -177,6 +186,8 @@ passwd
 
 ### Install WIFI packages
 
+Only for laptops.
+
 ```bash
 pacman -S dialog
 ```
@@ -185,6 +196,8 @@ Check the `wifi-menu` works well.
 ```bash
 wifi-menu
 ```
+
+### Enable DHCP service
 
 Enable the `dhcpcd` service to start after boot.
 ```bash
@@ -225,6 +238,8 @@ title ArchLinux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
 ```
+
+Use the PARTUUID of the `/` partition.
 ```bash
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda5) rw" >> /boot/loader/entries/arch.conf
 ```
@@ -241,7 +256,8 @@ reboot
 
 ### Install the desktop environment
 
-Enable the Internet temporary
+Only for laptops.
+Enable the Internet temporary.
 
 ```
 sudo wifi-menu
@@ -252,6 +268,14 @@ sudo systemctl start dhcpcd
 
 ```bash
 sudo pacman -Syu
+```
+
+### Install the nVidia driver
+
+If you're using the nVidia graphic card, the terminal prompt is too tiny to read. You need to install the nVidia driver.
+```bash
+sudo pacman -S nvidia
+sudo reboot
 ```
 
 ### Set Microcode
@@ -270,17 +294,20 @@ initrd /initramfs-linux.img
 
 ```bash
 sudo bootctl update
-reboot
+sudo reboot
 ```
 
 ### Install xorg
 
 ```bash
-sudo pacman -S xorg-server xorg-server-utils xorg-init
+sudo pacman -S xorg-server xorg-apps
 sudo pacman -S xorg-twm xorg-xclock xterm
 ```
 
-And install the graphic drivers. First, identify the graphic card.
+### Install Macbook graphic driver
+
+Only for Macbook users.
+First, identify the graphic card.
 ```bash
 lspci | grep -e VGA -e 3D
 ```
@@ -290,15 +317,21 @@ Maybe, the graphic card of MacBook Air is made by Intel.
 sudo pacman -S xf86-video-intel
 ```
 
-### Install Xfce
+### Install Xfce and i3-wm
 
+Install Xfce
 ```bash
 sudo pacman -S xfce4 xfce4-goodies
 sudo pacman -S xorg-xinit
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
 
-Add the following to the bottom of `~/.bash_profile`.
+Install i3-wm
+```bash
+sudo pacman -S i3-wm dmenu i3status
+```
+
+Add the following to the bottom of `~/.bash_profile`. The `startx` will start the xorg-server with `~/.xinitrc`.
 ```
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
@@ -307,22 +340,10 @@ fi
 
 Add the following to the bottom of `~/.xinitrc`.
 ```bash
-session=${1:-xfce} # Here Xfce is kept as default
-
-case $session in
-    i3|i3wm           ) exec i3;;
-    kde               ) exec startkde;;
-    xfce|xfce4        ) exec startxfce4;;
-    # No known session, try to run it as command
-    *                 ) exec $1;;
-esac
+exec i3
 ```
 
-### Install the i3-wm
-
-```bash
-sudo pacman -S i3-wm dmenu i3status
-```
+If you want to use other desktop environments, see [this](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Installation).
 
 ### Install the font
 
@@ -338,6 +359,7 @@ sudo pacman -S firefox flashplugin
 
 ### Turn the Internet on when startup
 
+Only for laptops.
 Check the name of the network interface.
 ```bash
 ip addr
@@ -350,23 +372,28 @@ sudo systemctl enable netctl-auto@wlp2s0b1
 sudo reboot
 ```
 
-### Install yaourt
+### Install yay
 
 ```bash
-git clone https://aur.archlinux.org/package-query.git
-cd package-query
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
-cd ..
-git clone https://aur.archlinux.org/yaourt.git
-cd yaourt
-makepkg -si
-cd ..
+```
+
+### Install sound
+
+```bash
+yay -S alsa-utils
+sudo reboot
+```
+```bash
+speaker-test -c 2
 ```
 
 ### Install the Korean font
 
 ```bash
-yaourt -S ttf-nanum
+yay -S ttf-nanum
 ```
 
 ### Install the Korean input method
@@ -374,12 +401,17 @@ yaourt -S ttf-nanum
 ```bash
 sudo pacman -S ibus ibus-hangul
 ibus-setup
-sudo reboot
 ```
 
-Click the ibus icon bottom-right of the screen and enable `Start in hangul mode`.
+Enable `Start in hangul mode`.
 
-## Trackpad
+Add the line `ibus-daemon -xdr` before the line `exec i3` in the `~/.xinitrc`.
+Instead, you can use my [.xinirc](https://github.com/oudwud/me/blob/master/.xinitrc).
+
+
+## Laptop Hardware Setup
+ 
+### Trackpad
 
 Don't use synaptics or mtrack. They are utter crap.
 
@@ -402,15 +434,7 @@ EndSection
 sudo reboot
 ```
 
-### Sound
-
-```bash
-yaourt -S alsa-utils
-sudo reboot
-```
-```bash
-speaker-test -c 2
-```
+### Shortchuts for sound
 
 Add the followings to the `~/.config/i3/config`.
 ```
@@ -471,7 +495,7 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 ```
 
-### Keyboar backlight
+### Keyboard backlight
 
 ```bash
 kbdlight max
