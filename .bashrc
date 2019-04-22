@@ -20,5 +20,3 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 source ~/git-completion.bash
-
-export PATH=$PATH:/usr/local/go/bin
