@@ -1,6 +1,8 @@
 [user]
 	email = taxihighway@gmail.com
 	name = Youngjoon Lee
+[credential]
+	helper = cache
 [core]
 	editor = vim
 [merge]
