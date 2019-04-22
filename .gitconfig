@@ -1,0 +1,19 @@
+[user]
+	email = taxihighway@gmail.com
+	name = Youngjoon Lee
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	l = log
+	la = log --graph --all
