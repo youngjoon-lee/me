@@ -254,10 +254,9 @@ reboot
 
 ## Post-installation
 
-### Install the desktop environment
+### Enable the Internet temporary.
 
 Only for laptops.
-Enable the Internet temporary.
 
 ```
 sudo wifi-menu
