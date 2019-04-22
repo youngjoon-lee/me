@@ -188,3 +188,8 @@ mode "$mode_system" {
 }
 
 bindsym $mod+p mode "$mode_system"
+
+# Alsamixer Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master unmute 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master unmute 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master mute

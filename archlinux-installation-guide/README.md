@@ -433,22 +433,10 @@ EndSection
 sudo reboot
 ```
 
-### Shortchuts for sound
-
-Add the followings to the `~/.config/i3/config`.
-```
-# Alsamixer Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master unmute 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master unmute 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer set Master mute
-```
-
-And restart the i3wm.
-
 ### Facetime WebCam driver
 
 ```bash
-yaourt -S bcwc-pcie-git
+yay -S bcwc-pcie-git
 ```
 
 ### Bluetooth
@@ -463,7 +451,7 @@ blueman-applet
 ### MBP Fan Usage
 
 ```bash
-yaourt -S mbpfan-git
+yay -S mbpfan-git
 sudo systemctl enable --now mbpfan
 ```
 
@@ -477,14 +465,14 @@ sudo systemctl enable --now tlp
 ### Overheat shutoff
 
 ```bash
-yaourt -S thermald
+yay -S thermald
 sudo systemctl enable --now thermald
 ```
 
 ### Display brightness
 
 ```bash
-yaourt -S light-git
+yay -S light-git
 ```
 
 Add the following lines in `~/.config/i3/config`.
