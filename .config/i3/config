@@ -193,3 +193,6 @@ bindsym $mod+p mode "$mode_system"
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master unmute 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master unmute 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer set Master mute
+
+# Screenshot
+bindsym $mod+Shift+s exec --no-startup-id xfce4-screenshooter
