@@ -62,10 +62,8 @@ sudo systemctl start dhcpcd
 
 ### Update the system clock
 
-Only for laptops.
-
 ```bash
-timedatectl set-ntp true
+timedatectl set-ntp true  # Set to use NTP (Network Time Protocol)
 timedatectl status
 ```
 
@@ -276,6 +274,16 @@ If you're using the nVidia graphic card, the terminal prompt is too tiny to read
 sudo pacman -S nvidia
 sudo reboot
 ```
+
+### Install NTP (Network Time Protocol)
+
+```bash
+sudo pacman -S ntp
+sudo systemctl enable --now ntpd.service
+timedatectl status
+```
+
+To dual boot with Windows, [configure Windows to use UTC](https://wiki.archlinux.org/index.php/System_time#UTC_in_Windows) by the hardware clock.
 
 ### Set Microcode
 
