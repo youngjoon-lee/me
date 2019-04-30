@@ -20,6 +20,7 @@ set softtabstop=0
 set noexpandtab
 set noshiftround
 
+set noro " prevent vimdiff to be read-only
 set number
 
 set encoding=utf-8
