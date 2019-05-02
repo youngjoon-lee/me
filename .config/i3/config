@@ -196,3 +196,5 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master mute
 
 # Screenshot
 bindsym $mod+Shift+s exec --no-startup-id xfce4-screenshooter
+
+focus_follows_mouse no
