@@ -20,3 +20,5 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 source ~/git-completion.bash
+
+export NNN_USE_EDITOR=1
