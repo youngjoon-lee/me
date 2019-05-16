@@ -21,4 +21,16 @@ export QT_IM_MODULE=ibus
 
 source ~/git-completion.bash
 
+export EDITOR=vim
 export NNN_USE_EDITOR=1
+export NNN_TMPFILE="/tmp/nnn"
+
+n()
+{
+        nnn "$@"
+
+        if [ -f $NNN_TMPFILE ]; then
+                . $NNN_TMPFILE
+                rm -f $NNN_TMPFILE > /dev/null
+        fi
+}
