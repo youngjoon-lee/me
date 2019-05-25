@@ -5,11 +5,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+set -o vi
+
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias vi='vim'
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+#export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 export LANG=en_US.UTF-8
 
@@ -32,3 +34,6 @@ n()
                 rm -f $NNN_TMPFILE > /dev/null
         fi
 }
+
+source /opt/kube-ps1/kube-ps1.sh
+export PS1='[\[$(tput setaf 3)\]\W\[$(tput sgr0)\] $(kube_ps1)]\$ '
