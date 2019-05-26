@@ -46,6 +46,7 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 
@@ -79,6 +80,16 @@ nmap <leader>t :NERDTreeToggle<CR>
 
 " lightline.vim
 set laststatus=2
+let g:lightline = {
+	\ 'colorscheme': 'seoul256',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'fugitive#head'
+	\ },
+	\ }
 
 " vim-gitgutter
 set updatetime=100
