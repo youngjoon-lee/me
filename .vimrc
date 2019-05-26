@@ -43,7 +43,7 @@ highlight Search cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=Dar
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ervandew/supertab'
+Plug 'ajh17/VimCompletesMe'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -71,11 +71,6 @@ function! s:build_go_files()
 endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-
-" supertab
-"let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
-let g:SuperTabDefaultCompletionType = 'context'
 
 " nerdtree
 nmap <leader>t :NERDTreeToggle<CR>
