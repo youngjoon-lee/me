@@ -44,6 +44,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 
@@ -74,3 +75,6 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 " nerdtree
 nmap <leader>t :NERDTreeToggle<CR>
+
+" lightline.vim
+set laststatus=2
