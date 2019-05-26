@@ -14,6 +14,7 @@ filetype off
 " Turn on syntax highlighting.
 syntax on
 
+" Default indentation settings
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
@@ -93,3 +94,6 @@ let g:lightline = {
 
 " vim-gitgutter
 set updatetime=100
+
+" yaml (no plugin)
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
