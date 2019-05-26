@@ -74,7 +74,8 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 
 " supertab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabDefaultCompletionType = '<C-X><C-O>'
+let g:SuperTabDefaultCompletionType = 'context'
 
 " nerdtree
 nmap <leader>t :NERDTreeToggle<CR>
