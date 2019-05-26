@@ -45,6 +45,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
@@ -78,3 +79,6 @@ nmap <leader>t :NERDTreeToggle<CR>
 
 " lightline.vim
 set laststatus=2
+
+" vim-gitgutter
+set updatetime=100
