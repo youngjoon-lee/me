@@ -43,6 +43,7 @@ call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -71,3 +72,5 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 " supertab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
+" nerdtree
+nmap <leader>t :NERDTreeToggle<CR>
