@@ -27,6 +27,7 @@ set number
 set encoding=utf-8
 
 set hlsearch
+filetype plugin indent on
 
 let mapleader = ','
 
