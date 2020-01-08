@@ -38,6 +38,8 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 highlight QuickFixLine cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
 highlight Search cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+set background=dark
+set t_Co=256
 
 
 " plug
