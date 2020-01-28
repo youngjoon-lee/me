@@ -51,6 +51,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 
 
@@ -96,3 +100,15 @@ set updatetime=100
 
 " yaml (no plugin)
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" LSP
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['clangd'],
+  \ 'c': ['clangd'],
+  \ }
