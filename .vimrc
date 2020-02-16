@@ -46,7 +46,6 @@ set t_Co=256
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ajh17/VimCompletesMe'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -111,4 +110,6 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 let g:LanguageClient_serverCommands = {
   \ 'cpp': ['clangd'],
   \ 'c': ['clangd'],
+  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ 'python': ['~/.local/bin/pyls'],
   \ }
