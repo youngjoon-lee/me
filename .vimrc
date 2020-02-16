@@ -68,7 +68,7 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
@@ -118,3 +118,5 @@ let g:LanguageClient_serverCommands = {
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ 'python': ['~/.local/bin/pyls'],
   \ }
+
+autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
