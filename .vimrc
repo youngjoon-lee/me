@@ -50,13 +50,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'Shougo/deoplete.nvim'     " Please: pip3 install pynvim
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " vim-go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
