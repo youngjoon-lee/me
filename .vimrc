@@ -54,6 +54,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
 
