@@ -31,12 +31,23 @@ filetype plugin indent on
 
 let mapleader = ','
 
+" colorscheme
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+highlight QuickFixLine cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+highlight Search cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+set background=dark
+set t_Co=256
+
+
 " plug
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'morhetz/gruvbox'
+Plug 'crusoexia/vim-monokai'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -50,8 +61,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 call plug#end()
 
 " colorscheme
-set background=dark
-colorscheme gruvbox
+colorscheme monokai
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
