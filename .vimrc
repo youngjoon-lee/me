@@ -31,17 +31,6 @@ filetype plugin indent on
 
 let mapleader = ','
 
-" colorscheme
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-highlight QuickFixLine cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
-highlight Search cterm=None ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
-set background=dark
-set t_Co=256
-
-
 " plug
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -62,6 +51,8 @@ call plug#end()
 
 " colorscheme
 colorscheme monokai
+set background=dark
+set t_Co=256
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -124,5 +115,7 @@ let g:LanguageClient_serverCommands = {
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ 'python': ['~/.local/bin/pyls'],
   \ }
+
+set colorcolumn=80
 
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict'
