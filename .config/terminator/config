@@ -1,0 +1,37 @@
+[global_config]
+  inactive_color_offset = 1.0
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[New Layout]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 2896f33a-8a8c-4db4-8ffc-773d4c243b94
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 95:55
+      size = 734, 451
+      title = /bin/zsh
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 2896f33a-8a8c-4db4-8ffc-773d4c243b94
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#272822"
+    cursor_color = "#ffffff"
+    foreground_color = "#f8f8f2"
+    palette = "#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5"
+    show_titlebar = False
