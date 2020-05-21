@@ -357,12 +357,8 @@ sudo pacman -S ttf-dejavu
 # firefox
 sudo pacman -S firefox flashplugin
 
-# audio utils
+# audio & mic
 sudo pacman -S alsa-utils
-alsamixer
-speaker-test -c 2
-
-# mic
 sudo pacman -S pulseaudio
 sudo pacman -S pavucontrol
 sudo reboot
