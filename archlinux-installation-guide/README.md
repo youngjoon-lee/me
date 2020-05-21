@@ -53,7 +53,7 @@ If the directory does not exist, the system may be booted in BIOS or CSM mode. R
 
 ### Connect to the Internet
 
-Only for laptops.
+**Only for laptops.**
 
 ```bash
 sudo wifi-menu
@@ -156,7 +156,6 @@ Generate them with:
 ```bash
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
-export LANG=en_US.UTF-8
 ```
 
 ### Network configuration
@@ -182,24 +181,12 @@ vi /etc/hosts
 passwd
 ```
 
-### Install WIFI packages
-
-Only for laptops.
+### Install WIFI package and Enable Network services
 
 ```bash
-pacman -S dialog
-```
-
-Check the `wifi-menu` works well.
-```bash
-wifi-menu
-```
-
-### Enable DHCP service
-
-Enable the `dhcpcd` service to start after boot.
-```bash
-sudo systemctl enable dhcpcd
+sudo pacman -S iwd
+sudo systemctl enable --now iwd
+sudo systemctl enable --now dhcpcd
 ```
 
 ### Add an user
@@ -254,11 +241,16 @@ reboot
 
 ### Enable the Internet temporary.
 
-Only for laptops.
+**For WiFi:**
 
 ```
-sudo wifi-menu
-sudo systemctl start dhcpcd
+sudo iwctl
+
+[iwd] device list
+[iwd] station wlan0 scan
+[iwd] station wlan0 get-networks
+[iwd] station wlan0 connect SSID
+[iwd] exit
 ```
 
 ### Update the pacman
