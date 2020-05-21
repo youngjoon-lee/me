@@ -1,11 +1,11 @@
 [credential]
 	helper = cache
 [core]
-	editor = nvim
+	editor = vim
 [merge]
 	tool = vimdiff
-[mergetool "vimdiff"]
-	path = nvim
+[diff]
+	tool = vimdiff
 [difftool]
 	prompt = false
 [alias]
