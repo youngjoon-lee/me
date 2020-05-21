@@ -118,7 +118,7 @@ Move the fastest mirror to the top of the list.
 ### Install base packages
 
 ```bash
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware
 ```
 
 
@@ -308,7 +308,7 @@ sudo reboot
 
 ```bash
 sudo pacman -S xorg-server xorg-apps
-sudo pacman -S xorg-twm xorg-xclock xterm
+sudo pacman -S xorg-twm xorg-xclock xorg-setxkbmap xterm
 ```
 
 ### Install Macbook graphic driver
@@ -352,17 +352,44 @@ exec i3
 
 If you want to use other desktop environments, see [this](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Installation).
 
-### Install the font
+### Install everything
 
 ```bash
+# CapsLock to Ctrl
+# add the following to the ~/.xinitrc
+setxkbmap -option ctrl:nocaps
+
+# font
 sudo pacman -S ttf-dejavu
-```
 
-### Install the Firefox
-
-```bash
+# firefox
 sudo pacman -S firefox flashplugin
+
+# audio utils
+sudo pacman -S alsa-utils
+alsamixer
+speaker-test -c 2
+
+# yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# NanumGothic font
+yay -S ttf-nanum
+
+# nimf Korean input method (managed by hamonikr)
+yay -S nimf-git
+nimf-settings
+# edit ~/.xinitrc : https://wiki.archlinux.org/index.php/Nimf
+
+# auto power regulation
+sudo pacman -S tlp
+sudo systemctl enable --now tlp
 ```
+
+--------------------------------------------------
+# Old info
 
 ### Turn the Internet on when startup
 
@@ -382,25 +409,12 @@ sudo reboot
 ### Install yay
 
 ```bash
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-```
 
-### Install sound
-
-```bash
-yay -S alsa-utils
-sudo reboot
-```
-```bash
-speaker-test -c 2
 ```
 
 ### Install the Korean font
 
 ```bash
-yay -S ttf-nanum
 ```
 
 ### Install the Korean input method
