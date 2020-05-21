@@ -362,6 +362,13 @@ sudo pacman -S alsa-utils
 alsamixer
 speaker-test -c 2
 
+# display brightness
+sudo pacman -S light
+sudo usermod -a -G video $USER
+# add the following lines in `~/.config/i3/config`.
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
 # yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
