@@ -30,5 +30,7 @@ export XMODIFIERS="@im=nimf"
 nimf
 
 setxkbmap -option ctrl:nocaps
+xscreensaver -no-splash &
+xss-lock -- xscreensaver-command -lock &
 
 exec i3

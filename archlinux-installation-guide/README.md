@@ -402,6 +402,13 @@ nimf-settings
 # auto power regulation
 sudo pacman -S tlp
 sudo systemctl enable --now tlp
+
+# xscreensaver
+sudo pacman -S xscreensaver xss-lock
+vi ~/.xinitrc
+# add the following commands
+# xscreensaver -no-splash &
+# xss-lock -- xscreensaver-command -lock &
 ```
 
 --------------------------------------------------
