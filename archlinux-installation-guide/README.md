@@ -362,6 +362,12 @@ sudo pacman -S alsa-utils
 alsamixer
 speaker-test -c 2
 
+# mic
+sudo pacman -S pulseaudio
+sudo pacman -S pavucontrol
+sudo reboot
+pavucontrol
+
 # display brightness
 sudo pacman -S light
 sudo usermod -a -G video $USER
