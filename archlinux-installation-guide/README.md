@@ -375,6 +375,17 @@ sudo usermod -a -G video $USER
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
+# bluetooth
+sudo pacman -S bluez bluez-utils
+# check if bluetooth is blocked
+sudo rfkill list
+# if blocked, unblock it
+sudo rfkill unblock bluetooth
+# enable it
+sudo systemctl enable --now bluetooth
+sudo pacman -S blueman
+blueman-manager
+
 # yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -469,10 +480,7 @@ yay -S bcwc-pcie-git
 ### Bluetooth
 
 ```bash
-sudo pacman -S bluez bluez-utils
-sudo systemctl enable --now bluetooth
-sudo pacman -S blueman
-blueman-applet
+
 ```
 
 ### MBP Fan Usage
