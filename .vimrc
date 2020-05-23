@@ -47,6 +47,9 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 " colorscheme
@@ -79,6 +82,9 @@ function! s:build_go_files()
 endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+" rust
+let g:rustfmt_autosave = 1
 
 " nerdtree
 nmap <leader>t :NERDTreeToggle<CR>
