@@ -8,6 +8,7 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+	trustExitCode = true # Enable `:cq`
 [alias]
 	d = difftool
 	co = checkout
