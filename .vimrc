@@ -34,7 +34,8 @@ let mapleader = ','
 " plug
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'crusoexia/vim-monokai'
 Plug 'itchyny/lightline.vim'
@@ -51,6 +52,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'majutsushi/tagbar'
 call plug#end()
+
+" fzf
+nnoremap <C-p> :Files<Cr>
 
 " colorscheme
 colorscheme monokai
@@ -111,7 +115,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " LSP
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
