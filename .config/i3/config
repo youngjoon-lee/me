@@ -203,7 +203,7 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
 # Screenshot
-bindsym $mod+Shift+s exec --no-startup-id gnome-screenshot -i
+bindsym $mod+Print exec --no-startup-id xfce4-screenshooter --region -s /dev/stdout | xclip -selection clipboard -t image/png
 
 focus_follows_mouse no
 
