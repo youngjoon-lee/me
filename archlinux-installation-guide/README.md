@@ -405,6 +405,9 @@ vi ~/.xinitrc
 # add the following commands
 # xscreensaver -no-splash &
 # xss-lock -- xscreensaver-command -lock &
+
+# VirtualBox
+https://linuxhint.com/install-virtualbox-arch-linux/
 ```
 
 --------------------------------------------------
