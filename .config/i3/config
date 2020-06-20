@@ -198,9 +198,13 @@ bindsym Pause exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound v
 bindsym Scroll_Lock exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym Print exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+
+# Keyboard backlight
+bindsym $mod+bracketright exec light -Ars "sysfs/leds/tpacpi::kbd_backlight" 1
+bindsym $mod+bracketleft exec light -Urs "sysfs/leds/tpacpi::kbd_backlight" 1
 
 # Screenshot
 bindsym $mod+Print exec --no-startup-id xfce4-screenshooter --region -s /dev/stdout | xclip -selection clipboard -t image/png
