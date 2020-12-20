@@ -13,7 +13,7 @@ order += "load"
 order += "memory"
 order += "disk /"
 order += "tztime local"
-order += "tztime berlin"
+#order += "tztime berlin"
 
 wireless wlan0 {
         format_up = "W: (%quality at %essid, %bitrate) %ip"
