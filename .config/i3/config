@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -211,13 +211,13 @@ focus_follows_mouse no
 exec --no-startup-id dunst
 
 # Multiple monitors
-exec --no-startup-id xrandr --output HDMI-2 --above eDP-1 --auto
+exec --no-startup-id xrandr --output DP-2-1 --above eDP-1 --auto
 
-set $mode_screen Screen (s) eDP-1, (b) HDMI-2, (m) eDP-1 + HDMI-2
+set $mode_screen Screen (s) eDP-1, (b) DP-2-1, (m) eDP-1 + DP-2-1
 mode "$mode_screen" {
-	bindsym s exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-2 --off, mode "default"
-	bindsym b exec --no-startup-id xrandr --output eDP-1 --off --output HDMI-2 --auto, mode "default"
-	bindsym m exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-2 --above eDP-1, mode "default"
+	bindsym s exec --no-startup-id xrandr --output eDP-1 --auto --output DP-2-1 --off, mode "default"
+	bindsym b exec --no-startup-id xrandr --output eDP-1 --off --output DP-2-1 --auto, mode "default"
+	bindsym m exec --no-startup-id xrandr --output eDP-1 --auto --output DP-2-1 --above eDP-1, mode "default"
 
 	# back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -225,3 +225,6 @@ mode "$mode_screen" {
 }
 
 bindsym $mod+Shift+s mode "$mode_screen"
+
+# Bluetooth
+exec --no-startup-id blueman-applet
