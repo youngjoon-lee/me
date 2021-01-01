@@ -34,12 +34,12 @@ let mapleader = ','
 
 " plug
 call plug#begin()
+Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'crusoexia/vim-monokai'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -51,9 +51,7 @@ call plug#end()
 nnoremap <C-p> :Files<Cr>
 
 " colorscheme
-colorscheme monokai
-set background=dark
-set t_Co=256
+colorscheme nord
 
 " vim-go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
