@@ -13,3 +13,6 @@ sudo pacman -S autorandr pulseaudio-bluetooth
 
 # fonts
 sudo pacman -S ttf-baekmuk
+
+# xclip for i3-scrot
+sudo pacman -S ttf-xclip
