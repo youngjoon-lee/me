@@ -8,6 +8,7 @@ ln -s ${DIR}/.Xmodmap ~/.Xmodmap
 ln -s ${DIR}/.tmux.conf ~/.tmux.conf
 ln -s ${DIR}/.vimrc ~/.vimrc
 ln -s ${DIR}/.gitconfig ~/.gitconfig
+ln -s ${DIR}/.alacritty.yml ~/.alacritty.yml
 
 sudo cp ${DIR}/30-touchpad.conf /etc/X11/xorg.conf.d/
 
