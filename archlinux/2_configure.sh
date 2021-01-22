@@ -70,7 +70,7 @@ echo "if [ -z \"\${DISPLAY}\" ] && [ \"\${XDG_VTNR}\" -eq 1 ]; then" >> ${USER_H
 echo "\texec startx" >> ${USER_HOME}/.bashrc
 echo "fi" >> ${USER_HOME}/.bashrc
 
-pacman -S firefox git jq xclip openssh xorg-xrandr arandr autorandr
+pacman -S firefox git jq xclip openssh xorg-xrandr arandr autorandr fd
 pacman -S ttf-baekmuk ttf-liberation ttf-dejavu noto-fonts
 
 pacman -S ibus ibus-hangul
