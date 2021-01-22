@@ -18,3 +18,4 @@ makepkg -si
 cd -
 
 yay -S intellij-idea-ultimate-edition
+yay -S ttf-nanum
