@@ -71,7 +71,7 @@ echo "\texec startx" >> ${USER_HOME}/.bashrc
 echo "fi" >> ${USER_HOME}/.bashrc
 
 pacman -S firefox git jq xclip openssh xorg-xrandr arandr autorandr fd
-pacman -S ttf-baekmuk ttf-liberation ttf-dejavu noto-fonts
+pacman -S ttf-baekmuk ttf-liberation ttf-dejavu noto-fonts ttf-hack
 
 pacman -S ibus ibus-hangul
 echo "GTK_IM_MODULE=ibus" >> /etc/environment

@@ -115,6 +115,7 @@ let g:coc_global_extensions = [
 	\ 'coc-clangd',
 	\ 'coc-cmake',
 	\ 'coc-metals',
+	\ 'coc-tsserver',
 	\ 'coc-python'
 	\ ]
 
@@ -267,3 +268,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType typescript,javascript setlocal ts=2 sts=2 sw=2 expandtab
