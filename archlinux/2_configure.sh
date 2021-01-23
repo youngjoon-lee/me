@@ -72,6 +72,7 @@ echo "fi" >> ${USER_HOME}/.bashrc
 
 pacman -S firefox git jq xclip openssh xorg-xrandr arandr autorandr fd
 pacman -S ttf-baekmuk ttf-liberation ttf-dejavu noto-fonts ttf-hack
+pacman -S gnome-keyring libsecret
 
 pacman -S ibus ibus-hangul
 echo "GTK_IM_MODULE=ibus" >> /etc/environment
