@@ -18,3 +18,6 @@ cd -
 
 yay -S visual-studio-code-bin intellij-idea-ultimate-edition
 yay -S ttf-nanum
+
+sudo pacman -S virtualbox virtualbox-host-dkms virtualbox-guest-iso
+yay -S virtualbox-ext-oracle
