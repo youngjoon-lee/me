@@ -4,8 +4,9 @@ set -euxo pipefail
 
 MY_HOST="t490-arch"
 MY_USER="oudwud"
+MY_GROUP="users"
 USER_HOME="/home/${MY_USER}"
-ROOT_PARTITION="/dev/nvme0n1p2"
+ROOT_PARTITION="/dev/nvme0n1p3"
 
 pacman -Syu
 pacman -S vim
@@ -26,7 +27,7 @@ mkinitcpio -P
 
 passwd
 
-useradd -m -g users -G wheel -s /bin/bash ${MY_USER}
+useradd -m -g ${MY_GROUP} -G wheel -s /bin/bash ${MY_USER}
 passwd ${MY_USER}
 
 EDITOR=vim visudo
@@ -83,3 +84,5 @@ touch ${USER_HOME}/.config/autostart/ibus-daemon.desktop
 echo "[Desktop Entry]" >> ${USER_HOME}/.config/autostart/ibus-daemon.desktop
 echo "Name=IBus Daemon" >> ${USER_HOME}/.config/autostart/ibus-daemon.desktop
 echo "Exec=ibus-daemon -drx" >> ${USER_HOME}/.config/autostart/ibus-daemon.desktop
+
+chown -R ${MY_USER}:${MY_GROUP} /home/oudwud

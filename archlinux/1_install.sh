@@ -9,9 +9,11 @@ timedatectl set-ntp true
 
 cfdisk /dev/nvme0n1
 mkfs.fat -F32 /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
+mkswap /dev/nvme0n1p2
+swapon /dev/nvme0n1p2
 
-mount /dev/nvme0n1p2 /mnt
+mount /dev/nvme0n1p3 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 
