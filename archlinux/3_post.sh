@@ -19,5 +19,5 @@ cd -
 yay -S visual-studio-code-bin intellij-idea-ultimate-edition
 yay -S ttf-nanum bitwarden authy
 
-sudo pacman -S virtualbox virtualbox-host-dkms virtualbox-guest-iso
+sudo pacman -S virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 yay -S virtualbox-ext-oracle
