@@ -100,8 +100,6 @@ let g:lightline = {
 " vim-gitgutter
 set updatetime=100
 
-" yaml (no plugin)
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 "------------------------------------------------------------------------------
@@ -271,3 +269,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType typescript,javascript setlocal ts=2 sts=2 sw=2 expandtab
+
+" yaml (no plugin)
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
