@@ -1,0 +1,4 @@
+let mapleader = ","
+
+nnoremap <leader>c :action FindUsages<CR>
+nnoremap <leader>t :action RefactoringMenu<CR>
